@@ -1,0 +1,26 @@
+PyBlindsControl
+
+This project implements a simple webserver allowing to control sun blinds using a web interface or api calls
+(POST requests) by your favourite home automation software
+
+You will need this project: https://github.com/liebrandapps/emuDC90
+
+Also refer to www.liebrand.io on a description of the project.
+
+The sun blinds are normally controlled by a DC90 remote control (also referred to as FB001 by Bauhaus).
+
+In this setup a RF 433 Mhz RF module controlled by an Arduino Nano connected via USB to a Raspberry. The emuDC90
+project provides the software for receiving and sending the code. This project builds an web (api) interface to the
+Arduino Nano.
+
+The pbc.ini file contains the configuration. You will need to read out the addresses of the blinds you want to control
+and enter them in the ini file. Also you provide name and tags.
+
+The post request (if you use the api directly) needs to contain a json body like this:
+
+{"tag":"LuW","cmd":"out"}
+
+tag - defined in pbc.ini
+cmd - in, out or stop
+
+The listening port is defined in Server.py - currently port 8020
